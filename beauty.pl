@@ -20,3 +20,7 @@ opendir (DIR, '.') or die "Couldn't open directory, $!";
 my @files = readdir DIR or die "READ DIRERROR";#while (my $file = readdir DIR) { print "$file\n";}
 foreach my $file (@files) {print "$file\n";} #foreach (@files) {print "$_\n";} # print filename for each
 closedir DIR;
+
+# string matching with one line
+my $targetstr = "Hello world.";
+print "OK" if $targetstr =~ /world/;
