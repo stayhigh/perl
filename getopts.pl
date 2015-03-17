@@ -8,7 +8,7 @@ use Getopt::Std;
 my $opt_string = "ht:p:";
 my %opts = (); 
 getopts ("$opt_string",\%opts);
-die "-t target is a must" if not defined $opts{t};
-die "-p   port is a must" if not defined $opts{p};
+die "-t target is a must" if not exists $opts{t};
+die "-p   port is a must" if not exists $opts{p};
 
 print "main function runs\n";
