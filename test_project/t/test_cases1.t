@@ -2,7 +2,7 @@
 use strict;
 use warnings;
 use Test::More;
-use Scalar::Util; #type checking
+use Scalar::Util qw(reftype); #type checking
 
 
 #All test names
@@ -23,7 +23,14 @@ sub ultimate_answer{
 }
 
 #All variables' name 
-my $num = 100.0;
+my $somenum = 100;
+my %somehash = (k1 => 'v1', k2 => 'v2');
+my $numref = \$somenum;
+my $hashref = \%somehash;
+
+#show variable types
+print ref($numref)."\n";
+print ref($hashref)."\n";
 
 # use_ok: check for module import
 # like:check for pattern
@@ -47,6 +54,13 @@ for (1..20){
     isnt(ultimate_answer(),$expect_answer, $rangetest_name)
 }
 
-print reftype($num);
-#isa_ok($num,  );
+#data type checking, class instance checking, and parent class checking
+#for example:
+#isa_ok($object,   $class, $object_name);
+#isa_ok($subclass, $class, $object_name);
+#isa_ok($ref,      $type,  $ref_name);
+
+isa_ok($numref, 'SCALAR'  );
+isa_ok($hashref, 'HASH'  );
+
 
