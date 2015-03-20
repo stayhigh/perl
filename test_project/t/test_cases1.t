@@ -30,7 +30,7 @@ my $hashref = \%somehash;
 
 #show variable types
 #<BUILT-IN TYPES>
-# => SCALAR ARRAY HASH CODE REF GLOB LVALUE FORMAT IO VSTRING Regexp 
+      # SCALAR ARRAY HASH CODE REF GLOB LVALUE FORMAT IO VSTRING Regexp 
 print ref($numref)."\n";
 print ref($hashref)."\n";
 
