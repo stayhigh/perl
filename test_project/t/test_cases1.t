@@ -29,6 +29,8 @@ my $numref = \$somenum;
 my $hashref = \%somehash;
 
 #show variable types
+#<BUILT-IN TYPES>
+# => SCALAR ARRAY HASH CODE REF GLOB LVALUE FORMAT IO VSTRING Regexp 
 print ref($numref)."\n";
 print ref($hashref)."\n";
 
@@ -38,6 +40,10 @@ print ref($hashref)."\n";
 # ok: check for expression
 # cmp_ok: check for perl operator comparators
 # can_ok: check for module methods or object methods, need -Ilib to include *.pm and call use_ok() before can_ok()
+# isa_ok: check for data type, class instance, and parent class 
+      #isa_ok($object,   $class, $object_name);
+      #isa_ok($subclass, $class, $object_name);
+      #isa_ok($ref,      $type,  $ref_name);
 
 use_ok("MyMath");
 like ($got, qr/hello/, $hellotest_name);
@@ -54,11 +60,6 @@ for (1..20){
     isnt(ultimate_answer(),$expect_answer, $rangetest_name)
 }
 
-#data type checking, class instance checking, and parent class checking
-#for example:
-#isa_ok($object,   $class, $object_name);
-#isa_ok($subclass, $class, $object_name);
-#isa_ok($ref,      $type,  $ref_name);
 
 isa_ok($numref, 'SCALAR'  );
 isa_ok($hashref, 'HASH'  );
