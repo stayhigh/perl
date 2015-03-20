@@ -2,6 +2,7 @@
 use strict;
 use warnings;
 use Test::More;
+use Scalar::Util; #type checking
 
 
 #All test names
@@ -20,6 +21,9 @@ my $comparison_op = '==';
 sub ultimate_answer{
     return 42;
 }
+
+#All variables' name 
+my $num = 100.0;
 
 # use_ok: check for module import
 # like:check for pattern
@@ -42,3 +46,7 @@ for (1..20){
     my $expect_answer = $_;
     isnt(ultimate_answer(),$expect_answer, $rangetest_name)
 }
+
+print reftype($num);
+#isa_ok($num,  );
+
