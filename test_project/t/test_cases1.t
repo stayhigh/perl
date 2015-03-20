@@ -11,6 +11,7 @@ my $wordtest_name = "word string test";
 my $istest_name = "num is test";
 my $isnttest_name = "num isn't test";
 my $ok_expression_name = "expression test";
+my $rangetest_name = "range number test";
 my $comparsion_test = "comparision test";
 my $comparision_expected = 42; 
 my $comparison_op = '==';
@@ -35,3 +36,9 @@ isnt(ultimate_answer(),0,$isnttest_name);
 ok(ultimate_answer() == 42,$ok_expression_name);
 cmp_ok(ultimate_answer(), $comparison_op, $comparision_expected, $comparsion_test);
 can_ok('MyMath', "compute");
+
+
+for (1..20){
+    my $expect_answer = $_;
+    isnt(ultimate_answer(),$expect_answer, $rangetest_name)
+}
