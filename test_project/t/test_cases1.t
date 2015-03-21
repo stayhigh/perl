@@ -1,4 +1,6 @@
-#!/bin/perl -w 
+#!/bin/perl -wT
+#-T :taint mode detects its program running with differing real and effective user or group IDs.
+
 use strict;
 use warnings;
 use Test::More;
@@ -58,13 +60,6 @@ isnt(ultimate_answer(),0,$isnttest_name);
 ok(ultimate_answer() == 42,$ok_expression_name);
 cmp_ok(ultimate_answer(), $comparison_op, $comparision_expected, $comparsion_test);
 can_ok('MyMath', "compute");
-
-
-for (1..20){
-    my $expect_answer = $_;
-    isnt(ultimate_answer(),$expect_answer, $rangetest_name)
-}
-
 isa_ok($numref, 'SCALAR'  );
 isa_ok($hashref, 'HASH'  );
 done_testing();
