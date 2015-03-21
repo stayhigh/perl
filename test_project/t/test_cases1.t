@@ -3,6 +3,7 @@ use strict;
 use warnings;
 use Test::More;
 use Scalar::Util qw(reftype); #type checking
+use Test::More tests => 30; # test 30 items
 
 
 #All test names
@@ -23,20 +24,24 @@ sub ultimate_answer{
 }
 
 #All variables' name 
+my $somestr = "123";
 my $somenum = 100;
 my %somehash = (k1 => 'v1', k2 => 'v2');
 my $numref = \$somenum;
 my $hashref = \%somehash;
+my $num2str = sprintf "%8d", $somenum;
 
 #show variable types
 #<BUILT-IN TYPES>
       # SCALAR ARRAY HASH CODE REF GLOB LVALUE FORMAT IO VSTRING Regexp 
-print ref($numref)."\n";
-print ref($hashref)."\n";
+#print ref($numref)."\n";
+#print ref($hashref)."\n";
+#print "==>".ref(\$num2str)."\n";
+#print "==>".ref(\$str2num)."\n";
 
 # use_ok: check for module import
-# like:check for pattern
-# is: check for function return values
+# like: test regular expression
+# is: test a matching expression
 # ok: check for expression
 # cmp_ok: check for perl operator comparators
 # can_ok: check for module methods or object methods, need -Ilib to include *.pm and call use_ok() before can_ok()
@@ -60,8 +65,6 @@ for (1..20){
     isnt(ultimate_answer(),$expect_answer, $rangetest_name)
 }
 
-
 isa_ok($numref, 'SCALAR'  );
 isa_ok($hashref, 'HASH'  );
-
-
+done_testing();
