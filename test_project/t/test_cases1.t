@@ -5,7 +5,8 @@ use strict;
 use warnings;
 use Test::More;
 use Scalar::Util qw(reftype); #type checking
-use Test::More tests => 30; # test 30 items
+use Test::More; # if the items num is not specified,call done_testing() at the end. 
+#use Test::More tests => 10; # test 10 items
 
 
 #All test names
